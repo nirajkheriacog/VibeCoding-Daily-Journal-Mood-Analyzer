@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mood-happy: #FFD700;
+  --color-mood-excited: #FF6B6B;
+  --color-mood-calm: #87CEEB;
+  --color-mood-neutral: #C0C0C0;
+  --color-mood-anxious: #FFA500;
+  --color-mood-sad: #6B7280;
+}

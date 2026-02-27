@@ -4,30 +4,26 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A web application for writing daily journal entries and manually tracking mood over time. See [projectbrief.md](projectbrief.md) for full requirements. The key feature areas are:
-
-- **Journal entries**: Create, save, and browse daily entries
-- **Mood selection**: Predefined mood options attached to each entry
-- **Mood visualization**: Charts/graphs showing mood trends over time
-- **Privacy**: All data stays local to the user (no backend required unless added)
-
-## Status
-
-This project is not yet scaffolded. No framework, build tool, or package manager has been chosen. Before writing code, establish the tech stack and initialize the project.
-
-## Architecture Expectations
-
-When the project is built, it should follow these principles derived from the brief:
-
-- **Local-first data**: Journal entries and mood data should be persisted in `localStorage` or IndexedDB unless a backend is explicitly added
-- **Mood options**: Use a fixed set of predefined moods (e.g., happy, sad, anxious, calm, excited, neutral) — not free-text
-- **Visualization**: Mood-over-time chart should be a core feature, not an afterthought — wire it up early to real data
-- **Responsive**: Must work across different device sizes
+A React + TypeScript web app for writing daily journal entries and manually tracking mood over time. Built with Vite, Tailwind CSS v4, Recharts, and React Router v7. All data is stored in localStorage — no backend.
 
 ## Commands
 
-Once the project is initialized, update this section with the actual commands for:
-- Running the dev server
-- Building for production
-- Running tests
-- Linting
+- `npm run dev` — start Vite dev server
+- `npm run build` — TypeScript check + production build
+- `npm run test` — run tests in watch mode (Vitest)
+- `npm run test:run` — run tests once
+- `npm run lint` — run ESLint
+
+## Architecture
+
+- **State ownership**: `useEntries()` hook is called once in `Layout.tsx` and shared to all pages via React Router's `useOutletContext<EntriesContextType>()`
+- **Data flow**: `storage.ts` (localStorage) → `useEntries` (CRUD + React state) → pages via Outlet context → components via props
+- **Routing**: `createBrowserRouter` in `App.tsx` with `Layout` as root route. 4 routes: `/` (today), `/entries` (history), `/entries/:id` (detail), `/insights` (charts)
+- **Mood config**: `constants.ts` holds `MOODS` record (emoji, label, color, score) and `MOOD_LIST` display order. Use inline `style` for mood colors — not dynamic Tailwind classes
+- **Date handling**: `getLocalDateString()` in `constants.ts` produces YYYY-MM-DD in local timezone. Never use `toISOString().slice()` for local dates
+
+## Key Constraints
+
+- One journal entry per calendar day (enforced in TodayPage)
+- Mood is always manually selected from 6 fixed options — no AI inference
+- All data stays in the browser (localStorage under key `journal_entries`)
