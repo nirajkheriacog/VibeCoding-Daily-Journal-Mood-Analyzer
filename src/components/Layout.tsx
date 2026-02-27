@@ -5,6 +5,7 @@ const NAV_ITEMS = [
   { to: '/', label: 'Today' },
   { to: '/entries', label: 'History' },
   { to: '/insights', label: 'Insights' },
+  { to: '/chat', label: 'Ask' },
 ]
 
 export default function Layout() {

@@ -24,3 +24,21 @@ export interface EntriesContextType {
   getEntryByDate: (date: string) => JournalEntry | undefined
   getEntryById: (id: string) => JournalEntry | undefined
 }
+
+// Chat feature types
+
+export type ChatRole = 'user' | 'assistant'
+
+export interface CitedEntry {
+  id: string
+  date: string
+  title: string
+}
+
+export interface ChatMessage {
+  id: string
+  role: ChatRole
+  content: string
+  citations: CitedEntry[]
+  timestamp: string
+}
