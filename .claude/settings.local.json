@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /c/Users/142680/Desktop/DailyJournal-sunrocks-142680-2300746/VibeCoding-Daily-Journal-Mood-Analyzer/ status)",
+      "Bash(git -C /c/Users/142680/Desktop/DailyJournal-sunrocks-142680-2300746/VibeCoding-Daily-Journal-Mood-Analyzer/ ls-tree -r HEAD)"
+    ]
+  }
+}
