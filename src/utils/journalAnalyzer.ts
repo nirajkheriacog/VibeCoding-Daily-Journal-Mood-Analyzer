@@ -37,7 +37,7 @@ function streak(entries: JournalEntry[]): number {
   const dates = new Set(entries.map((e) => e.date))
   const today = new Date()
   const todayStr = getLocalDateString(today)
-  let check = new Date(today)
+  const check = new Date(today)
   if (!dates.has(todayStr)) {
     check.setDate(check.getDate() - 1)
     if (!dates.has(getLocalDateString(check))) return 0

@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npm run build)",
       "Bash(npm run test:run)",
-      "Bash(npm uninstall @anthropic-ai/sdk)"
+      "Bash(npm uninstall @anthropic-ai/sdk)",
+      "Bash(npm install --save-dev @modelcontextprotocol/sdk)",
+      "Bash(npm run lint)"
     ]
   }
 }

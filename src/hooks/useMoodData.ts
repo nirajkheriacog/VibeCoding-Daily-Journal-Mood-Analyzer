@@ -37,7 +37,7 @@ export function useMoodData(entries: JournalEntry[]) {
     const todayStr = getLocalDateString(today)
 
     // Start counting from today or yesterday
-    let checkDate = new Date(today)
+    const checkDate = new Date(today)
     if (!dates.has(todayStr)) {
       checkDate.setDate(checkDate.getDate() - 1)
       if (!dates.has(getLocalDateString(checkDate))) return 0

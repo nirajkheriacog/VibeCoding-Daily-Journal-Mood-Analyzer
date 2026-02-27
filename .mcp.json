@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sentiment": {
+      "command": "node",
+      "args": ["tools/sentiment-server.js"]
+    }
+  }
+}
